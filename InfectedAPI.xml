@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InfectedAPI</name>
+    </assembly>
+    <members>
+        <member name="M:Api_Mongo.Controllers.InfectedController.AddInfected(Api_Mongo.Models.InfectedViewModel)">
+            <summary>
+            Register a infected person in the database
+            </summary>
+            <param name="viewModel"> Person info</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api_Mongo.Controllers.InfectedController.GetInfectedList">
+            <summary>
+            Get all registers from the database
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
