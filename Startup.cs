@@ -1,5 +1,7 @@
 using Api_Mongo.Repositories;
 using Api_Mongo.Services;
+using InfectedAPI.Repositories;
+using InfectedAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +27,9 @@ namespace InfectedAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IServiceInfected, ServiceInfected>();
-            services.AddSingleton<IRepositoryInfected, RepositoryMongoDB>();
+            services.AddScoped<IServiceInterestedUser, ServiceInterestedUser>();
+            services.AddSingleton<IRepositoryInfected, RepositoryInfectedMongoDB>();
+            services.AddSingleton<IRepositoryInterestedUser, RepositoryInterestedUserMongoDB>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

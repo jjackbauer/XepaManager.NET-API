@@ -10,11 +10,11 @@ using System.Linq;
 
 namespace Api_Mongo.Repositories
 {
-    public class RepositoryMongoDB : IRepositoryInfected
+    public class RepositoryInfectedMongoDB : IRepositoryInfected
     {
         public IMongoDatabase DB { get; }
-        private readonly IMongoCollection<Infected> _infectadosCollection;
-        public RepositoryMongoDB(IConfiguration configuration)
+        private readonly IMongoCollection<Infected> _infectedCollection;
+        public RepositoryInfectedMongoDB(IConfiguration configuration)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Api_Mongo.Repositories
                 throw new MongoException("It was not possible to connect to MongoDB", ex);
             }
 
-            _infectadosCollection = DB.GetCollection<Infected>(typeof(Infected).Name.ToLower());
+            _infectedCollection = DB.GetCollection<Infected>(typeof(Infected).Name.ToLower());
         }
         private void MapClasses()
         {
@@ -48,13 +48,13 @@ namespace Api_Mongo.Repositories
         {
             var infectado = new Infected(viewModel.Birthday, viewModel.Sex, viewModel.Latitude, viewModel.Longitude);
 
-             _infectadosCollection.InsertOne(infectado);
+             _infectedCollection.InsertOne(infectado);
 
             return; 
         }
         public List<InfectedViewModel> GetInfectedList()
         {
-            var infectados = _infectadosCollection.Find(Builders<Infected>.Filter.Empty).ToList().Select(p => new InfectedViewModel
+            var infectados = _infectedCollection.Find(Builders<Infected>.Filter.Empty).ToList().Select(p => new InfectedViewModel
             {
                 Birthday = p.Birthday,
                 Sex = p.Sex,

@@ -17,5 +17,61 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:InfectedAPI.Controllers.InterestedUserController.AddInterestedUser(InfectedAPI.Models.InterestedUserViewModel)">
+            <summary>
+            Add to the database an user interested on close to expire vaccines
+            </summary>
+            <param name="viewModel">User informations</param>
+            <returns>The created user</returns>
+            <response code="201">Return the removed user removed from the database</response>
+            <response code="400">There is an user in the database with the provided IdNumber and Name</response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:InfectedAPI.Controllers.InterestedUserController.RemoveVaccinatedUser(InfectedAPI.Models.InterestedUserViewModelInput)">
+            <summary>
+            Removes an user from the database
+            </summary>
+            <param name="input">Given Inputs IdNumber and Name</param>
+            <returns>InterestedUserViewModel</returns>
+            <response code="200">Return the removed user removed from the database</response>
+            <response code="404">There is no register with the provided input</response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:InfectedAPI.Controllers.InterestedUserController.GetAllOrderedByAge">
+            <summary>
+            Get All the users from the database, ordered descending by Age
+            </summary>
+            <returns>A List of InterestedUserViewModel</returns>
+            <response code="200">Return all the users from the database</response>
+            <response code="404">There is no registers in the database</response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:InfectedAPI.Controllers.InterestedUserController.GetInterestedUser(System.Int64,System.String)">
+            <summary>
+            Get an user from the database
+            </summary>
+            <returns>A List of InterestedUserViewModel</returns>
+            <response code="200">Return an user from the database</response>
+            <response code="404">There is no register with the provided input</response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:InfectedAPI.Controllers.InterestedUserController.GetNNextToBeVaccinatedUsers(System.Int64)">
+            <summary>
+            Get the next N users from the database, ordered by vaccnation priority
+            </summary>
+            <returns>A List of InterestedUserViewModel</returns>
+            <response code="200">Return all the users from the database</response>
+            <response code="404">There is no registers in the database</response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:InfectedAPI.Controllers.InterestedUserController.GetAllNextToBeVaccinatedUsers">
+            <summary>
+            Get all the users from the database, ordered by vaccnation priority
+            </summary>
+            <returns>A List of InterestedUserViewModel</returns>
+            <response code="200">Return all the users from the database</response>
+            <response code="404">There is no registers in the database</response>
+            <response code="500">Internal Error</response>
+        </member>
     </members>
 </doc>
